@@ -1,58 +1,58 @@
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.AspNetCore.Authorization;
-// using LocalShops.Services;
-// using LocalShops.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using LocalShops.Services;
+using LocalShops.Models;
 
-// namespace LocalShops.Controllers
-// {
-//     [Authorize]
-//     [ApiController]
-//     [Route("[controller]")]
-//     public class UsersController : ControllerBase
-//     {
-//         private IUserService _userService;
+namespace LocalShops.Controllers
+{
+    [Authorize]
+    [ApiController]
+    [Route("[controller]")]
+    public class UsersController : ControllerBase
+    {
+        private IUserService _userService;
 
-//         public UsersController(IUserService userService)
-//         {
-//             _userService = userService;
-//         }
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
-//         [AllowAnonymous]
-//         [HttpPost("authenticate")]
-//         public IActionResult Authenticate([FromBody]User userParam)
-//         {
-//             var user = _userService.Authenticate(userParam.Username, userParam.Password);
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody]User userParam)
+        {
+            var user = _userService.Authenticate(userParam.Username, userParam.Password);
 
-//             if (user == null)
-//                 return BadRequest(new { message = "Username or password is incorrect" });
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
 
-//             return Ok(user);
-//         }
+            return Ok(user);
+        }
 
-//         [Authorize(Roles = Role.Admin)]
-//         [HttpGet]
-//         public IActionResult GetAll()
-//         {
-//             var users =  _userService.GetAll();
-//             return Ok(users);
-//         }
+        [Authorize(Roles = Role.Admin)]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var users =  _userService.GetAll();
+            return Ok(users);
+        }
 
-//         [HttpGet("{id}")]
-//         public IActionResult GetById(int id)
-//         {
-//             var user =  _userService.GetById(id);
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var user =  _userService.GetById(id);
 
-//             if (user == null) {
-//                 return NotFound();
-//             }
+            if (user == null) {
+                return NotFound();
+            }
 
-//             // only allow admins to access other user records
-//             var currentUserId = int.Parse(User.Identity.Name);
-//             if (id != currentUserId && !User.IsInRole(Role.Admin)) {
-//                 return Forbid();
-//             }
+            // only allow admins to access other user records
+            var currentUserId = int.Parse(User.Identity.Name);
+            if (id != currentUserId && !User.IsInRole(Role.Admin)) {
+                return Forbid();
+            }
 
-//             return Ok(user);
-//         }
-//     }
-// }
+            return Ok(user);
+        }
+    }
+}
