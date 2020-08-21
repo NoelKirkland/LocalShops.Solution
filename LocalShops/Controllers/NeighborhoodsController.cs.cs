@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LocalShops.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("[controller]")]
   [ApiController]
   public class NeighborhoodsController : ControllerBase
   {
@@ -19,7 +19,6 @@ namespace LocalShops.Controllers
       _db = db;
     }
 
-  [Authorize(Roles = Role.Admin)]
   [HttpGet]
   public ActionResult<IEnumerable<Neighborhood>> Get()
   {
@@ -51,8 +50,7 @@ namespace LocalShops.Controllers
   [HttpPut("{id}")]
   public void Put(int id, [FromBody] Neighborhood neighborhood)
   {
-    var neighborhoodToChange = _db.Neighborhoods.FirstOrDefault(entry => entry.NeighborhoodId == id);
-    _db.Entry(neighborhoodToChange).State = EntityState.Modified;
+    _db.Entry(neighborhood).State = EntityState.Modified;
     _db.SaveChanges();
   }
 
