@@ -10,40 +10,40 @@ namespace LocalShops.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class RestaurantsController : ControllerBase
+  public class ShopsController : ControllerBase
   {
     private LocalShopsContext _db;
 
-    public RestaurantsController(LocalShopsContext db)
+    public ShopsController(LocalShopsContext db)
     {
       _db = db;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Restaurant>> Get()
+    public ActionResult<IEnumerable<Shop>> Get()
     {
-      return _db.Restaurants.ToList();
+      return _db.Shops.ToList();
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Restaurant> Get(int id)
+    public ActionResult<Shop> Get(int id)
     {
-      return _db.Restaurants.FirstOrDefault(entry => entry.RestaurantId == id);
+      return _db.Shops.FirstOrDefault(entry => entry.ShopId == id);
     }
 
     [Authorize(Roles = Role.Admin)]
     [HttpPost]
-    public void Post([FromBody] Restaurant restaurant)
+    public void Post([FromBody] Shop shop)
     {
-      _db.Restaurants.Add(restaurant);
+      _db.Shops.Add(shop);
       _db.SaveChanges();
     }
 
     [Authorize(Roles = Role.Admin)]
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] Restaurant restaurant)
+    public void Put(int id, [FromBody] Shop shop)
     {
-      _db.Entry(restaurant).State = EntityState.Modified;
+      _db.Entry(shop).State = EntityState.Modified;
       _db.SaveChanges();
     }
 
@@ -51,8 +51,8 @@ namespace LocalShops.Controllers
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
-      var restaurantToDelete = _db.Restaurants.FirstOrDefault(entry => entry.RestaurantId == id);
-      _db.Restaurants.Remove(restaurantToDelete);
+      var shopToDelete = _db.Shops.FirstOrDefault(entry => entry.ShopId == id);
+      _db.Shops.Remove(shopToDelete);
       _db.SaveChanges();
     }
   }
