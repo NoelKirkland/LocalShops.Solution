@@ -19,16 +19,12 @@ namespace LocalShops.Controllers
       _db = db;
     }
 
-    [Authorize(Roles = Role.User)]
-    [Authorize(Roles = Role.Admin)]
     [HttpGet]
     public ActionResult<IEnumerable<Restaurant>> Get()
     {
       return _db.Restaurants.ToList();
     }
 
-    [Authorize(Roles = Role.User)]
-    [Authorize(Roles = Role.Admin)]
     [HttpGet("{id}")]
     public ActionResult<Restaurant> Get(int id)
     {
