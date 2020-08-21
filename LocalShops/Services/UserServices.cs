@@ -20,6 +20,11 @@ namespace LocalShops.Services
 
     public class UserService : IUserService
     {
+        // private List<User> _users = new List<User>
+        // {
+        // new User { Id = 1, Username = "noel", Password = "noel", Role = Role.Admin },
+        // new User { Id = 2, Username = "user", Password = "user", Role = Role.User }
+        // };
 
         private LocalShopsContext _users;
         private readonly AppSettings _appSettings;
