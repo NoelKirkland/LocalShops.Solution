@@ -1,4 +1,4 @@
-/bin
-/obj
-appsettings.json
-LocalShopContext.cs
+LocalShops/bin
+LocalShops/obj
+LocalShops/appsettings.json
+LocalShops/Models/LocalShopContext.cs
