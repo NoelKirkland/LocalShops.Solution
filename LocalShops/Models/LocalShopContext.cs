@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LocalShop.Models
+namespace LocalShops.Models
 {
-  public class LocalShopContext : DbContext
+  public class LocalShopsContext : DbContext
   {
-    public LocalShopContext(DbContextOptions<LocalShopContext> options) : base(options)
+    public LocalShopsContext(DbContextOptions<LocalShopsContext> options) : base(options)
     {
     }
+    public DbSet<User> Users { get; set; }
     public DbSet<Neighborhood> Neighborhoods { get; set; }
     public DbSet<Restaurant> Restaurants { get; set; }
     public DbSet<Shop> Shops { get; set; }
@@ -15,8 +16,8 @@ namespace LocalShop.Models
     {
       builder.Entity<User>()
       .HasData(
-        new User { Id = 1, Username = ["YOUR-ADMIN-USERNAME-HERE"], Password = ["YOUR-ADMIN-PASSWORD-HERE"], Role = Role.Admin },
-        new User { Id = 2, Username = ["YOUR-USER-USERNAME-HERE"], Password = ["YOUR-USER-PASSWORD-HERE"], Role = Role.User },
+        new User { Id = 1, Username = "admin", Password = "admin", Role = Role.Admin },
+        new User { Id = 2, Username = "user", Password = "user", Role = Role.User }
       );
 
       builder.Entity<User>()
@@ -38,12 +39,12 @@ namespace LocalShop.Models
 
       builder.Entity<User>()
       .HasData(
-        new Restaurant { ShopId = 1, NeighborhoodId = 1, Name = "Wallgreens", Type = "drug store", StarRating = 2},
-        new Restaurant { ShopId = 2, NeighborhoodId = 1, Name = "7/11", Type = "convenience", StarRating = 2},
-        new Restaurant { ShopId = 3, NeighborhoodId = 2, Name = "Snap Fitness", Type = "gym/wellness", StarRating = 4},
-        new Restaurant { ShopId = 4, NeighborhoodId = 3, Name = "Ace Hardware", Type = "hardware store", StarRating = 3},
-        new Restaurant { ShopId = 5, NeighborhoodId = 3, Name = "7/11", Type = "convenience store", StarRating = 3},
-        new Restaurant { ShopId = 6, NeighborhoodId = 3, Name = "New Seasons", Type = "grocery store", StarRating = 5}
+        new Shop { ShopId = 1, NeighborhoodId = 1, Name = "Wallgreens", Type = "drug store", StarRating = 2},
+        new Shop { ShopId = 2, NeighborhoodId = 1, Name = "7/11", Type = "convenience", StarRating = 2},
+        new Shop { ShopId = 3, NeighborhoodId = 2, Name = "Snap Fitness", Type = "gym/wellness", StarRating = 4},
+        new Shop { ShopId = 4, NeighborhoodId = 3, Name = "Ace Hardware", Type = "hardware store", StarRating = 3},
+        new Shop { ShopId = 5, NeighborhoodId = 3, Name = "7/11", Type = "convenience store", StarRating = 3},
+        new Shop { ShopId = 6, NeighborhoodId = 3, Name = "New Seasons", Type = "grocery store", StarRating = 5}
       );
     }
   }
