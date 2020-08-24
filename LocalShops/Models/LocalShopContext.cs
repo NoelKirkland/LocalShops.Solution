@@ -22,7 +22,7 @@ namespace LocalShops.Models
 
       builder.Entity<Neighborhood>()
       .HasData(
-        new Neighborhood { NeighborhoodId = 1, Name = "Eastmorland"},
+        new Neighborhood { NeighborhoodId = 1, Name = "East Morland"},
         new Neighborhood { NeighborhoodId = 2, Name = "Sellwood"},
         new Neighborhood { NeighborhoodId = 3, Name = "Woodstock"}
       );
@@ -30,7 +30,7 @@ namespace LocalShops.Models
       builder.Entity<Restaurant>()
       .HasData(
         new Restaurant { RestaurantId = 1, NeighborhoodId = 1, Name = "Taco Express", Type = "Mexican", StarRating = 3},
-        new Restaurant { RestaurantId = 2, NeighborhoodId = 2, Name = "Betrie Lou's Cafe", Type = " American breakfast/lunch", StarRating = 3},
+        new Restaurant { RestaurantId = 2, NeighborhoodId = 2, Name = "Bertie Lou's Cafe", Type = " American breakfast/lunch", StarRating = 3},
         new Restaurant { RestaurantId = 3, NeighborhoodId = 2, Name = "Bellagios Pizza", Type = "Italian", StarRating = 4},
         new Restaurant { RestaurantId = 4, NeighborhoodId = 3, Name = "Otto's", Type = "German deli", StarRating = 5},
         new Restaurant { RestaurantId = 5, NeighborhoodId = 3, Name = "Tom Yum", Type = "Thai", StarRating = 5},

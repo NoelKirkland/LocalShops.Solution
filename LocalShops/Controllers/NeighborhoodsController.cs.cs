@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LocalShops.Controllers
 {
-  [Route("[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class NeighborhoodsController : ControllerBase
   {
