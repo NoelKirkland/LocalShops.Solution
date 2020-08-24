@@ -95,7 +95,7 @@ _Note: put http://localhost:5000 before each query_
 Path Parameters
 |  Parameter | Type | Default | Required | Description |
 | :--- | :--- | :--- | :--- | :--- |
-|  id | int | none | FALSE | Returns object with matching Id number |
+|  id | int | none | false | Returns object with matching Id number |
 |||||
 
 _Sample JSON response:_
